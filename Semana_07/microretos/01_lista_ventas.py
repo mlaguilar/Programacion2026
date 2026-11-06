@@ -11,7 +11,7 @@ print("Total inicial:", sum(ventas))
 # La venta del segundo día se corrigió de 92000 a 100000.
 
 
-ventas[1] = 300000
+ventas[1] = 500000
 print("Segundo día corregido:", ventas[1])
 print("Total corregido:", sum(ventas))
 
