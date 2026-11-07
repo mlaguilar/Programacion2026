@@ -49,13 +49,19 @@ conteo_medicamentos = {}
 total_medicamentos = 0
 conteo_hospital = {}
 total_pacientes = 0
+conteo_atenciones = {}
+total_pacientes = 0
 print("\ANALISIS FASE #2 MEDICAMENTOS Y ATENCIONES")
 for registro in registros:
     total_pacientes += 1
     hospital = registro["hospital"]
+    enfermedad = registro["diagnostico"]
     if hospital not in conteo_hospital:
         conteo_hospital[hospital]= 0
     conteo_hospital[hospital] += 1
+    if enfermedad not in conteo_atenciones:
+        conteo_atenciones[enfermedad]= 0
+    conteo_atenciones[enfermedad] += 1
     for medicamento in registro["medicamentos"]:
         medicamento = medicamento.strip().lower()
         if medicamento in equivalencias:
@@ -65,15 +71,12 @@ for registro in registros:
             conteo_medicamentos[medicamento] += 1
         else:
             conteo_medicamentos[medicamento] = 1
-print("\nTotal de medicamentos recetados", total_medicamentos)
 
+print("\nTotal de medicamentos recetados", total_medicamentos)
 for medicamento, cantidad in conteo_medicamentos.items():
     print(f"- {medicamento}: \t {cantidad}")
 for hospital, cantidad in conteo_hospital.items():
     print(f"- {hospital}: \t {cantidad}")
-# FASE 3: CONTAR ATENCIONES POR HOSPITAL
-
-
-
-# FASE 4: CONTAR ATENCIONES POR ENFERMEDAD DIAGNOSTICADA
+for enfermedad, cantidad in conteo_atenciones.items():
+    print(f"- {enfermedad}: \t {cantidad}")
 
